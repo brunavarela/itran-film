@@ -9,38 +9,35 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 w-full bg-white shadow-md z-50 p-1">
-      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between md:justify-start md:gap-10">
+    <header className="fixed bottom-0 p-6 lg:p-9 w-full bg-black border-t-1 border-white z-50">
+      <div className="max-w-7xl mx-auto flex items-center justify-between md:justify-start md:gap-10">
         {/* Logo com imagem */}
-            <img
+          <img
             src={Logo}
             alt="Logo iTran"
-            className="h-12 w-auto object-contain"
-        />
+            className="w-[118px] lg:w-[158px] h-auto object-contain"
+          />
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden text-2xl text-gray-800"
+          className="md:hidden text-2xl text-white"
           onClick={() => setIsOpen(!isOpen)}
-        >
+        > 
           <FiMenu />
         </button>
 
         {/* Desktop menu */}
-        <nav className="hidden md:flex flex-1 justify-center gap-8 text-gray-700 font-medium">
-          <a href="#projects" className="hover:text-black transition">Trabalhos</a>
-          <a href="#services" className="hover:text-black transition">Serviços</a>
-          <a href="#about" className="hover:text-black transition">Sobre</a>
-          <a href="#contact" className="hover:text-black transition">Contato</a>
+        <nav className="hidden text-base gap-[90px] md:flex flex-1 justify-center uppercase text-white font-normal">
+          <a href="/" className="hover:text-gray-400 transition">Home</a>
+          <a href="about" className="hover:text-gray-400 transition">Sobre</a>
+          <a href="portfolio" className="hover:text-gray-400 transition">Portfolio</a>
+          <a href="contact" className="hover:text-gray-400 transition">Contato</a>
         </nav>
 
         {/* Social links (Desktop only) */}
-        <div className="hidden md:flex gap-4 ml-auto text-gray-600 text-xl">
+        <div className="hidden md:flex gap-4 ml-auto text-white text-xl">
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <FaInstagram className="hover:text-pink-600 transition" />
-          </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-            <FaLinkedin className="hover:text-blue-600 transition" />
+            <FaInstagram className="hover:text-gray-400 transition w-6" />
           </a>
         </div>
       </div>
