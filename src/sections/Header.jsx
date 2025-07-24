@@ -12,11 +12,11 @@ const Header = () => {
     <header className="fixed bottom-0 p-6 lg:p-9 w-full bg-black border-t-1 border-white z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between md:justify-start md:gap-10">
         {/* Logo com imagem */}
-            <img
+          <img
             src={Logo}
             alt="Logo iTran"
             className="w-[118px] lg:w-[158px] h-auto object-contain"
-        />
+          />
 
         {/* Mobile menu button */}
         <button
@@ -28,10 +28,10 @@ const Header = () => {
 
         {/* Desktop menu */}
         <nav className="hidden text-base gap-[90px] md:flex flex-1 justify-center uppercase text-white font-normal">
-          <a href="#home" className="hover:text-gray-400 transition">Home</a>
-          <a href="#about" className="hover:text-gray-400 transition">Sobre</a>
-          <a href="#portfolio" className="hover:text-gray-400 transition">Portfolio</a>
-          <a href="#contact" className="hover:text-gray-400 transition">Contato</a>
+          <a href="/" className="hover:text-gray-400 transition">Home</a>
+          <a href="about" className="hover:text-gray-400 transition">Sobre</a>
+          <a href="portfolio" className="hover:text-gray-400 transition">Portfolio</a>
+          <a href="contact" className="hover:text-gray-400 transition">Contato</a>
         </nav>
 
         {/* Social links (Desktop only) */}
