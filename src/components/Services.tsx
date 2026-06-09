@@ -95,12 +95,13 @@ export default function Services() {
                   {service.description}
                 </p>
 
-                <button
-                  className="w-full sm:w-48 h-10 bg-orange-300 rounded-lg text-neutral-950 text-base font-medium cursor-pointer hover:bg-orange-200 transition-colors"
+                <a
+                  href="#contato"
+                  className="w-full sm:w-48 h-10 bg-orange-300 rounded-lg text-neutral-950 text-base font-medium hover:bg-orange-200 transition-colors inline-flex items-center justify-center"
                   style={{ fontFamily: 'Inter' }}
                 >
                   Solicitar Orçamento
-                </button>
+                </a>
               </div>
             ))}
           </div>
