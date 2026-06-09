@@ -1,0 +1,45 @@
+import heroBg from '../assets/hero.png'
+
+export default function Hero() {
+  return (
+    <section id="home" className="relative h-[790px] overflow-hidden bg-neutral-950">
+      <img
+        src={heroBg}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-neutral-950/70 to-neutral-950" />
+
+      <div className="relative z-10 flex justify-center h-full">
+        <div className="w-full max-w-[1280px] px-6 pt-40 flex flex-col items-start">
+          <div className="max-w-[768px] flex flex-col items-start">
+            <div className="mb-8">
+              <span
+                className="px-4 py-1.5 bg-orange-300/10 rounded-full border border-orange-300/30 text-orange-300 text-sm font-medium uppercase tracking-wide"
+                style={{ fontFamily: 'Inter' }}
+              >
+                HOME
+              </span>
+            </div>
+
+            <h1
+              className="text-white text-7xl font-bold leading-[90px] m-0"
+              style={{ fontFamily: 'Montserrat' }}
+            >
+              SUA VISÃO. NOSSA PRODUÇÃO.
+              <br />
+              <span className="text-orange-300">QUALIDADE CINEMATOGRÁFICA</span>
+            </h1>
+
+            <p
+              className="mt-6 text-neutral-400 text-xl leading-7"
+              style={{ fontFamily: 'Inter' }}
+            >
+              Soluções Essenciais para Sua Produção
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
