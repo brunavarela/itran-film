@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer className="bg-neutral-950 border-t border-white/10 py-8">
       <div className="flex justify-center">
-        <div className="w-full max-w-[1280px] px-6 flex justify-between items-center">
+        <div className="w-full max-w-[1280px] px-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-0 text-center sm:text-left">
           <span
             className="text-neutral-400 text-sm leading-5"
             style={{ fontFamily: 'Inter' }}

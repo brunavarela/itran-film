@@ -38,19 +38,19 @@ function LinkedInIcon() {
 
 export default function Contact() {
   return (
-    <section id="contato" className="bg-zinc-900 py-32">
+    <section id="contato" className="bg-zinc-900 py-16 lg:py-32">
       <div className="flex justify-center">
         <div className="w-full max-w-[896px] px-6">
           <h2
-            className="text-center text-5xl font-bold leading-[48px] m-0"
+            className="text-center text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight lg:leading-[48px] m-0"
             style={{ fontFamily: 'Montserrat' }}
           >
             <span className="text-white">Fale </span>
             <span className="text-orange-300">Conosco</span>
           </h2>
 
-          <form className="mt-16" onSubmit={(e) => e.preventDefault()}>
-            <div className="grid grid-cols-2 gap-[36px]">
+          <form className="mt-10 lg:mt-16" onSubmit={(e) => e.preventDefault()}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-9">
               <div className="flex flex-col">
                 <label
                   className="text-white text-sm font-medium leading-5 mb-2"
@@ -81,7 +81,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-col">
+            <div className="mt-4 sm:mt-6 flex flex-col">
               <label
                 className="text-white text-sm font-medium leading-5 mb-2"
                 style={{ fontFamily: 'Inter' }}
@@ -96,7 +96,7 @@ export default function Contact() {
               />
             </div>
 
-            <div className="mt-6 mb-6 flex flex-col">
+            <div className="mt-4 sm:mt-6 mb-6 flex flex-col">
               <label
                 className="text-white text-sm font-medium leading-5 mb-2"
                 style={{ fontFamily: 'Inter' }}
@@ -113,14 +113,14 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="w-56 h-14 bg-orange-300 rounded-lg text-neutral-950 text-lg font-bold cursor-pointer hover:bg-orange-200 transition-colors"
+              className="w-full sm:w-56 h-14 bg-orange-300 rounded-lg text-neutral-950 text-lg font-bold cursor-pointer hover:bg-orange-200 transition-colors"
               style={{ fontFamily: 'Inter' }}
             >
               Enviar Mensagem
             </button>
           </form>
 
-          <div className="mt-12 pt-12 border-t border-white/10 flex justify-between items-center">
+          <div className="mt-12 pt-12 border-t border-white/10 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6 sm:gap-0">
             <div className="flex flex-col gap-1">
               <span
                 className="text-neutral-400 text-sm leading-5"

@@ -53,18 +53,18 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="servicos" className="bg-zinc-900 py-32">
+    <section id="servicos" className="bg-zinc-900 py-16 lg:py-32">
       <div className="flex justify-center">
         <div className="w-full max-w-[1280px] px-6">
           <h2
-            className="text-center text-5xl font-bold leading-[48px] m-0"
+            className="text-center text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight lg:leading-[48px] m-0"
             style={{ fontFamily: 'Montserrat' }}
           >
             <span className="text-white">Nossos </span>
             <span className="text-orange-300">Serviços</span>
           </h2>
 
-          <div className="mt-16 grid grid-cols-3 gap-9">
+          <div className="mt-10 lg:mt-16 grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-9">
             {services.map((service) => (
               <div
                 key={service.title}
@@ -96,7 +96,7 @@ export default function Services() {
                 </p>
 
                 <button
-                  className="w-48 h-10 bg-orange-300 rounded-lg text-neutral-950 text-base font-medium cursor-pointer hover:bg-orange-200 transition-colors"
+                  className="w-full sm:w-48 h-10 bg-orange-300 rounded-lg text-neutral-950 text-base font-medium cursor-pointer hover:bg-orange-200 transition-colors"
                   style={{ fontFamily: 'Inter' }}
                 >
                   Solicitar Orçamento
