@@ -1,5 +1,3 @@
-import heroBg from '../assets/hero.png'
-
 export default function Hero() {
   return (
     <section
@@ -7,9 +5,10 @@ export default function Hero() {
       className="relative min-h-[600px] h-[600px] sm:h-[700px] lg:h-[790px] overflow-hidden bg-neutral-950"
     >
       <img
-        src={heroBg}
+        src="/images/hero/hero-principal.jpeg"
         alt="Produção de vídeo cinematográfica - ITRAN FILM"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        fetchPriority="high"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-neutral-950/70 to-neutral-950" />
 

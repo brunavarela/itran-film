@@ -1,15 +1,32 @@
+import { useState } from 'react'
+
 const portfolioItems = [
-  { category: 'Comercial', title: 'Comercial para Marca X', image: 'https://placehold.co/290x384/1a1a1a/555555' },
-  { category: 'Videoclipe', title: 'Videoclipe da Banda Y', image: 'https://placehold.co/290x384/1a1a1a/555555' },
-  { category: 'Casamento', title: 'Ensaio de Casamento', image: 'https://placehold.co/290x384/1a1a1a/555555' },
-  { category: 'Direção', title: 'Bastidores Direção', image: 'https://placehold.co/290x384/1a1a1a/555555' },
-  { category: 'Corporativo', title: 'Entrevista Corporativa', image: 'https://placehold.co/290x384/1a1a1a/555555' },
-  { category: 'Esporte', title: 'Captação Esportiva', image: 'https://placehold.co/290x384/1a1a1a/555555' },
-  { category: 'Animação', title: 'Peças de Animação', image: 'https://placehold.co/290x384/1a1a1a/555555' },
-  { category: 'Moda', title: 'Fashion Film', image: 'https://placehold.co/290x384/1a1a1a/555555' },
+  { category: 'Corporativo', title: 'Entrevista Corporativa',           image: '/images/corporativo/entrevista-auditorio.jpeg' },
+  { category: 'Corporativo', title: 'Gravação BNDES',                   image: '/images/corporativo/gravacao-bndes.jpeg' },
+  { category: 'Corporativo', title: 'Casa de Saúde São José',           image: '/images/corporativo/gravacao-casa-saude.jpeg' },
+  { category: 'Corporativo', title: 'Vídeo Institucional',              image: '/images/corporativo/gravacao-institucional.jpeg' },
+  { category: 'Externo',     title: 'Fundo Amazônia',                   image: '/images/externo/gravacao-fundo-amazonia.jpeg' },
+  { category: 'Externo',     title: 'Gravação Ao Ar Livre',             image: '/images/externo/gravacao-externa-teleprompter.jpeg' },
+  { category: 'Externo',     title: 'Documentário de Obra',             image: '/images/externo/gravacao-obra.jpeg' },
+  { category: 'Externo',     title: 'Captação Externa',                 image: '/images/externo/gravacao-externa-praca.jpeg' },
+  { category: 'Eventos',     title: 'Rio Porta de Entrada do Brasil',   image: '/images/eventos/cobertura-rio-porta-brasil.jpeg' },
+  { category: 'Eventos',     title: 'Cobertura de Palestra',            image: '/images/eventos/cobertura-evento-palestra.jpeg' },
+  { category: 'Publicidade', title: 'Fashion Film',                     image: '/images/publicidade/shoot-moda-modelo.jpeg' },
+  { category: 'Estúdio',    title: 'Green Screen',                     image: '/images/estudio/green-screen.jpeg' },
+  { category: 'Estúdio',    title: 'Gravação em Estúdio',              image: '/images/estudio/gravacao-interna.jpeg' },
+  { category: 'Estúdio',    title: 'Operação de Teleprompter',         image: '/images/estudio/setup-teleprompter.jpeg' },
+  { category: 'Drone',      title: 'Imagem Aérea DJI FPV',            image: '/images/equipamentos/drone-dji-fpv.jpeg' },
 ]
 
+const categories = ['Todos', ...Array.from(new Set(portfolioItems.map(i => i.category)))]
+
 export default function Portfolio() {
+  const [activeCategory, setActiveCategory] = useState('Todos')
+
+  const filtered = activeCategory === 'Todos'
+    ? portfolioItems
+    : portfolioItems.filter(i => i.category === activeCategory)
+
   return (
     <section id="portfolio" className="bg-neutral-950 py-16 lg:py-32">
       <div className="flex justify-center">
@@ -30,8 +47,25 @@ export default function Portfolio() {
             </p>
           </div>
 
-          <div className="mt-10 lg:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-[26px]">
-            {portfolioItems.map((item) => (
+          <div className="mt-8 flex flex-wrap justify-center gap-2 lg:gap-3">
+            {categories.map(cat => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4 py-1.5 rounded-full border text-sm font-medium transition-colors duration-200 cursor-pointer ${
+                  activeCategory === cat
+                    ? 'bg-orange-300 border-orange-300 text-neutral-950'
+                    : 'border-neutral-700 text-neutral-400 hover:border-orange-300 hover:text-orange-300'
+                }`}
+                style={{ fontFamily: 'Inter' }}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-10 lg:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-[26px]">
+            {filtered.map((item) => (
               <div
                 key={item.title}
                 className="relative rounded-lg overflow-hidden h-56 sm:h-72 lg:h-96 cursor-pointer group"
@@ -39,6 +73,7 @@ export default function Portfolio() {
                 <img
                   src={item.image}
                   alt={item.title}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/50 to-transparent opacity-80" />

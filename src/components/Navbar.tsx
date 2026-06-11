@@ -35,12 +35,19 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-neutral-950/95 border-b border-white/10">
       <div className="flex justify-center">
         <div className="w-full max-w-[1280px] px-6 py-4 flex justify-between items-center">
-          <span
-            className="text-white text-lg font-bold tracking-wide"
-            style={{ fontFamily: 'Montserrat' }}
-          >
-            ITRAN FILM
-          </span>
+          <a href="#home" className="flex items-center gap-2.5">
+            <img
+              src="/images/logo.png"
+              alt="ITRAN FILM logo"
+              className="h-9 w-auto"
+            />
+            <span
+              className="text-white text-lg font-bold tracking-widest"
+              style={{ fontFamily: 'Cinzel' }}
+            >
+              ITRAN FILM
+            </span>
+          </a>
 
           {/* Desktop links */}
           <div className="hidden lg:flex items-center gap-8">
