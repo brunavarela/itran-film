@@ -8,34 +8,6 @@ function InstagramIcon() {
   )
 }
 
-function YouTubeIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <rect x="1.67" y="3.33" width="16.67" height="13.33" rx="3" stroke="white" strokeWidth="1.67" />
-      <path d="M8 7.5L13.5 10L8 12.5V7.5Z" stroke="white" strokeWidth="1.67" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
-function TikTokIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path d="M13 1.67C13 1.67 13.5 5 16.67 5.83V8.33C16.67 8.33 14.33 8.17 13 6.83V13.33C13 15.72 11.05 17.67 8.67 17.67C6.28 17.67 4.33 15.72 4.33 13.33C4.33 10.95 6.28 9 8.67 9C8.83 9 9 9.01 9.17 9.03V11.58C9 11.55 8.84 11.53 8.67 11.53C7.65 11.53 6.83 12.34 6.83 13.37C6.83 14.39 7.65 15.2 8.67 15.2C9.69 15.2 10.5 14.39 10.5 13.37V1.67H13Z" stroke="white" strokeWidth="1.67" strokeLinejoin="round" />
-    </svg>
-  )
-}
-
-function LinkedInIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <rect x="1.67" y="1.67" width="16.67" height="16.67" rx="2" stroke="white" strokeWidth="1.67" />
-      <line x1="5" y1="8.33" x2="5" y2="15" stroke="white" strokeWidth="1.67" />
-      <circle cx="5" cy="5.83" r="0.83" fill="white" />
-      <path d="M8.33 8.33V15M8.33 11.25C8.33 9.58 15 8.75 15 11.67V15" stroke="white" strokeWidth="1.67" strokeLinecap="round" />
-    </svg>
-  )
-}
-
 export default function Contact() {
   return (
     <section id="contato" className="bg-zinc-900 py-16 lg:py-32">
@@ -132,26 +104,20 @@ export default function Contact() {
                 className="text-white text-base leading-6"
                 style={{ fontFamily: 'Inter' }}
               >
-                contato@itranfilm.com
+                itranvarela@gmail.com
               </span>
             </div>
 
             <div className="flex items-center gap-4">
-              {[
-                { icon: <InstagramIcon />, label: 'Instagram' },
-                { icon: <YouTubeIcon />, label: 'YouTube' },
-                { icon: <TikTokIcon />, label: 'TikTok' },
-                { icon: <LinkedInIcon />, label: 'LinkedIn' },
-              ].map(({ icon, label }) => (
-                <a
-                  key={label}
-                  href="#"
-                  aria-label={label}
-                  className="w-10 h-10 bg-zinc-800 rounded-full border border-white/10 flex items-center justify-center hover:bg-zinc-700 transition-colors"
-                >
-                  {icon}
-                </a>
-              ))}
+              <a
+                href="https://www.instagram.com/itranfilm"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-10 h-10 bg-zinc-800 rounded-full border border-white/10 flex items-center justify-center hover:bg-zinc-700 transition-colors"
+              >
+                <InstagramIcon />
+              </a>
             </div>
           </div>
         </div>
