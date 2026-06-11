@@ -1,15 +1,29 @@
+import { useState } from 'react'
+import { imagePlaceholders } from '../imagePlaceholders'
+
 export default function Hero() {
+  const [loaded, setLoaded] = useState(false)
+
   return (
     <section
       id="home"
       className="relative min-h-[600px] h-[600px] sm:h-[700px] lg:h-[790px] overflow-hidden bg-neutral-950"
     >
-      <img
-        src="/images/hero/hero-principal.jpeg"
-        alt="Produção de vídeo cinematográfica - ITRAN FILM"
-        className="absolute inset-0 w-full h-full object-cover object-center"
-        fetchPriority="high"
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 scale-110 bg-cover bg-center blur-xl"
+        style={{ backgroundImage: `url(${imagePlaceholders['/images/hero/hero-principal.jpeg']})` }}
       />
+      <picture className="contents">
+        <source srcSet="/images/hero/hero-principal.webp" type="image/webp" />
+        <img
+          src="/images/hero/hero-principal.jpeg"
+          alt="Produção de vídeo cinematográfica - ITRAN FILM"
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+          fetchPriority="high"
+          onLoad={() => setLoaded(true)}
+        />
+      </picture>
       <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-neutral-950/70 to-neutral-950" />
 
       <div className="relative z-10 flex justify-center h-full">

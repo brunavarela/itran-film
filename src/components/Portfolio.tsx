@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { imagePlaceholders } from '../imagePlaceholders'
 
 const portfolioItems = [
   { category: 'Corporativo', title: 'Entrevista Corporativa',           image: '/images/corporativo/entrevista-auditorio.jpeg' },
@@ -48,6 +49,10 @@ function XIcon() {
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState('Todos')
   const [modalIndex, setModalIndex] = useState<number | null>(null)
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set())
+
+  const markLoaded = (src: string) =>
+    setLoadedImages(prev => (prev.has(src) ? prev : new Set(prev).add(src)))
 
   const filtered = activeCategory === 'Todos'
     ? portfolioItems
@@ -128,15 +133,24 @@ export default function Portfolio() {
             {filtered.map((item, index) => (
               <div
                 key={item.title}
-                className="relative rounded-lg overflow-hidden h-56 sm:h-72 lg:h-96 cursor-pointer group"
+                className="relative rounded-lg overflow-hidden h-56 sm:h-72 lg:h-96 cursor-pointer group bg-zinc-800"
                 onClick={() => openModal(index)}
               >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 scale-110 bg-cover bg-center blur-lg"
+                  style={{ backgroundImage: `url(${imagePlaceholders[item.image]})` }}
                 />
+                <picture className="contents">
+                  <source srcSet={item.image.replace(/\.jpeg$/i, '.webp')} type="image/webp" />
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    onLoad={() => markLoaded(item.image)}
+                    className={`relative w-full h-full object-cover group-hover:scale-105 transition-[opacity,transform] duration-500 ${loadedImages.has(item.image) ? 'opacity-100' : 'opacity-0'}`}
+                  />
+                </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300" />
                 <div className="absolute bottom-0 left-0 p-4 lg:p-6">
                   <span
@@ -195,11 +209,14 @@ export default function Portfolio() {
             className="flex flex-col items-center max-w-4xl w-full mx-14 sm:mx-20"
             onClick={e => e.stopPropagation()}
           >
-            <img
-              src={currentItem.image}
-              alt={currentItem.title}
-              className="max-h-[75vh] max-w-full w-auto object-contain rounded-lg shadow-2xl"
-            />
+            <picture className="contents">
+              <source srcSet={currentItem.image.replace(/\.jpeg$/i, '.webp')} type="image/webp" />
+              <img
+                src={currentItem.image}
+                alt={currentItem.title}
+                className="max-h-[75vh] max-w-full w-auto object-contain rounded-lg shadow-2xl"
+              />
+            </picture>
             <div className="mt-3 text-center">
               <span
                 className="text-orange-300 text-sm font-medium"
