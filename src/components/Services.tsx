@@ -30,24 +30,24 @@ function ClapperboardIcon() {
 const services = [
   {
     icon: <TeleprompterIcon />,
-    title: 'Teleprompter Profissional',
-    subtitle: 'Com Operador',
+    title: 'Operador de Teleprompter',
+    subtitle: 'Rio de Janeiro',
     description:
-      'Diretrizes fluidas e naturais. Garanta a integridade de seu roteiro com nosso teleprompter especializado.',
+      'Diretrizes fluidas e naturais. Garanta a integridade de seu roteiro com nosso operador de teleprompter especializado, atendendo Rio de Janeiro e região.',
   },
   {
     icon: <CameraIcon />,
-    title: 'Câmera Pro',
+    title: 'Câmera Pro e Imagens Aéreas',
     subtitle: 'Com Operador',
     description:
-      'Captação de alta qualidade para suas produções. Perfeita para filmagens, making off ou cinema. Equipamentos profissionais.',
+      'Captação de alta qualidade para suas produções, incluindo imagens aéreas com drone. Perfeita para filmagens, making of ou cinema, com equipamentos profissionais.',
   },
   {
     icon: <ClapperboardIcon />,
     title: 'Produção Completa',
-    subtitle: 'Do Roteiro à Entrega',
+    subtitle: 'Videomaker Freelance',
     description:
-      'Serviço completo de produção audiovisual. Roteiro, filmagem, edição e pós-produção com qualidade cinematográfica.',
+      'Serviço completo de produção de vídeos: roteiro, filmagem, edição e pós-produção com qualidade cinematográfica, em Belford Roxo, Rio de Janeiro e região.',
   },
 ]
 

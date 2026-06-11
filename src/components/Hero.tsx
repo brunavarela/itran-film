@@ -8,7 +8,7 @@ export default function Hero() {
     >
       <img
         src={heroBg}
-        alt=""
+        alt="Produção de vídeo cinematográfica - ITRAN FILM"
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-neutral-950/90 via-neutral-950/70 to-neutral-950" />
@@ -38,7 +38,8 @@ export default function Hero() {
               className="mt-4 lg:mt-6 text-neutral-400 text-base lg:text-xl leading-7"
               style={{ fontFamily: 'Inter' }}
             >
-              Soluções Essenciais para Sua Produção
+              Videomaker freelance especializado em produção de vídeos, imagens aéreas e
+              operação de teleprompter no Rio de Janeiro e Belford Roxo.
             </p>
           </div>
         </div>

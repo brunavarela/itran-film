@@ -4,10 +4,71 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ITRAN FILM</title>
+
+    <title>ITRAN FILM | Produção de Vídeos e Videomaker no Rio de Janeiro</title>
+    <meta
+      name="description"
+      content="Produção de vídeos profissional no Rio de Janeiro e Belford Roxo. Videomaker freelance, imagens aéreas, câmera e operador de teleprompter."
+    />
+    <meta
+      name="keywords"
+      content="produção de vídeos, imagens aéreas, videomaker Belford Roxo, videomaker Rio de Janeiro, videomaker freelance, operador de teleprompter Rio de Janeiro"
+    />
+    <meta name="author" content="ITRAN FILM" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="ITRAN FILM" />
+    <meta property="og:title" content="ITRAN FILM | Produção de Vídeos e Videomaker no Rio de Janeiro" />
+    <meta
+      property="og:description"
+      content="Produção de vídeos profissional no Rio de Janeiro e Belford Roxo. Videomaker freelance, imagens aéreas, câmera e operador de teleprompter."
+    />
+    <meta property="og:image" content="/og-image.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ITRAN FILM | Produção de Vídeos e Videomaker no Rio de Janeiro" />
+    <meta
+      name="twitter:description"
+      content="Produção de vídeos profissional no Rio de Janeiro e Belford Roxo. Videomaker freelance, imagens aéreas, câmera e operador de teleprompter."
+    />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <!--
+      TODO quando o domínio definitivo estiver disponível:
+      - adicionar <link rel="canonical" href="https://SEUDOMINIO/">
+      - adicionar <meta property="og:url" content="https://SEUDOMINIO/">
+      - adicionar "url" no JSON-LD abaixo
+      - criar sitemap.xml e referenciar em robots.txt
+    -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "ITRAN FILM",
+        "description": "Produção de vídeos, imagens aéreas e operação de teleprompter para gravações no Rio de Janeiro e Belford Roxo.",
+        "image": "/og-image.png",
+        "email": "contato@itranfilm.com",
+        "areaServed": [
+          { "@type": "City", "name": "Rio de Janeiro" },
+          { "@type": "City", "name": "Belford Roxo" }
+        ],
+        "makesOffer": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Produção de Vídeos" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Imagens Aéreas" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Videomaker Freelance" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Operador de Teleprompter" } }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

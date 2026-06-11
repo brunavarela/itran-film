@@ -7,7 +7,7 @@ export default function Footer() {
             className="text-neutral-400 text-sm leading-5"
             style={{ fontFamily: 'Inter' }}
           >
-            © 2025 ITRAN FILM. Todos os direitos reservados.
+            © 2026 ITRAN FILM — Videomaker em Belford Roxo e Rio de Janeiro. Todos os direitos reservados.
           </span>
           <a
             href="#"

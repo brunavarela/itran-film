@@ -10,10 +10,12 @@ export default function App() {
   return (
     <div className="bg-neutral-950 min-h-screen">
       <Navbar />
-      <Hero />
-      <Services />
-      <Portfolio />
-      <Contact />
+      <main>
+        <Hero />
+        <Services />
+        <Portfolio />
+        <Contact />
+      </main>
       <Footer />
     </div>
   )
