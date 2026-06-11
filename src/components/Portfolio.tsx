@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 const portfolioItems = [
   { category: 'Corporativo', title: 'Entrevista Corporativa',           image: '/images/corporativo/entrevista-auditorio.jpeg' },
@@ -20,12 +20,72 @@ const portfolioItems = [
 
 const categories = ['Todos', ...Array.from(new Set(portfolioItems.map(i => i.category)))]
 
+function ChevronLeft() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="15 18 9 12 15 6" />
+    </svg>
+  )
+}
+
+function ChevronRight() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="9 18 15 12 9 6" />
+    </svg>
+  )
+}
+
+function XIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+  )
+}
+
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState('Todos')
+  const [modalIndex, setModalIndex] = useState<number | null>(null)
 
   const filtered = activeCategory === 'Todos'
     ? portfolioItems
     : portfolioItems.filter(i => i.category === activeCategory)
+
+  const openModal = (index: number) => setModalIndex(index)
+  const closeModal = () => setModalIndex(null)
+
+  const handleCategoryChange = (cat: string) => {
+    setActiveCategory(cat)
+    setModalIndex(null)
+  }
+
+  const prev = useCallback(() => {
+    setModalIndex(i => i === null ? null : (i - 1 + filtered.length) % filtered.length)
+  }, [filtered.length])
+
+  const next = useCallback(() => {
+    setModalIndex(i => i === null ? null : (i + 1) % filtered.length)
+  }, [filtered.length])
+
+  useEffect(() => {
+    if (modalIndex === null) return
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeModal()
+      if (e.key === 'ArrowLeft') prev()
+      if (e.key === 'ArrowRight') next()
+    }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [modalIndex, prev, next])
+
+  useEffect(() => {
+    document.body.style.overflow = modalIndex !== null ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [modalIndex])
+
+  const currentItem = modalIndex !== null ? filtered[modalIndex] : null
 
   return (
     <section id="portfolio" className="bg-neutral-950 py-16 lg:py-32">
@@ -51,7 +111,7 @@ export default function Portfolio() {
             {categories.map(cat => (
               <button
                 key={cat}
-                onClick={() => setActiveCategory(cat)}
+                onClick={() => handleCategoryChange(cat)}
                 className={`px-4 py-1.5 rounded-full border text-sm font-medium transition-colors duration-200 cursor-pointer ${
                   activeCategory === cat
                     ? 'bg-orange-300 border-orange-300 text-neutral-950'
@@ -65,10 +125,11 @@ export default function Portfolio() {
           </div>
 
           <div className="mt-10 lg:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-[26px]">
-            {filtered.map((item) => (
+            {filtered.map((item, index) => (
               <div
                 key={item.title}
                 className="relative rounded-lg overflow-hidden h-56 sm:h-72 lg:h-96 cursor-pointer group"
+                onClick={() => openModal(index)}
               >
                 <img
                   src={item.image}
@@ -76,7 +137,7 @@ export default function Portfolio() {
                   loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/50 to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300" />
                 <div className="absolute bottom-0 left-0 p-4 lg:p-6">
                   <span
                     className="text-orange-300 text-xs lg:text-sm font-medium leading-5"
@@ -96,6 +157,75 @@ export default function Portfolio() {
           </div>
         </div>
       </div>
+
+      {/* Modal lightbox */}
+      {currentItem && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/92 p-4"
+          onClick={closeModal}
+        >
+          {/* Fechar */}
+          <button
+            className="absolute top-4 right-4 z-10 text-white/70 hover:text-white transition-colors p-2 cursor-pointer"
+            onClick={closeModal}
+            aria-label="Fechar"
+          >
+            <XIcon />
+          </button>
+
+          {/* Contador */}
+          <span
+            className="absolute top-5 left-1/2 -translate-x-1/2 text-white/50 text-sm tabular-nums"
+            style={{ fontFamily: 'Inter' }}
+          >
+            {modalIndex! + 1} / {filtered.length}
+          </span>
+
+          {/* Seta esquerda */}
+          <button
+            className="absolute left-2 sm:left-6 z-10 text-white/70 hover:text-white transition-colors p-3 rounded-full bg-white/10 hover:bg-white/20 cursor-pointer"
+            onClick={e => { e.stopPropagation(); prev() }}
+            aria-label="Anterior"
+          >
+            <ChevronLeft />
+          </button>
+
+          {/* Imagem + legenda */}
+          <div
+            className="flex flex-col items-center max-w-4xl w-full mx-14 sm:mx-20"
+            onClick={e => e.stopPropagation()}
+          >
+            <img
+              src={currentItem.image}
+              alt={currentItem.title}
+              className="max-h-[75vh] max-w-full w-auto object-contain rounded-lg shadow-2xl"
+            />
+            <div className="mt-3 text-center">
+              <span
+                className="text-orange-300 text-sm font-medium"
+                style={{ fontFamily: 'Inter' }}
+              >
+                {currentItem.category}
+              </span>
+              <h3
+                className="text-white font-bold mt-0.5 text-base sm:text-lg m-0"
+                style={{ fontFamily: 'Montserrat' }}
+              >
+                {currentItem.title}
+              </h3>
+            </div>
+          </div>
+
+          {/* Seta direita */}
+          <button
+            className="absolute right-2 sm:right-6 z-10 text-white/70 hover:text-white transition-colors p-3 rounded-full bg-white/10 hover:bg-white/20 cursor-pointer"
+            onClick={e => { e.stopPropagation(); next() }}
+            aria-label="Próxima"
+          >
+            <ChevronRight />
+          </button>
+        </div>
+      )}
     </section>
   )
 }
